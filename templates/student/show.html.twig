@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Student Details{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        background-color: white;
+    }
+</style>
+
+<h1 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Student Details</h1>
+
+<div style="width: 50%; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <p><strong>ID:</strong> {{ student.id }}</p>
+    <p><strong>Name:</strong> {{ student.name }}</p>
+    <p><strong>Family Name:</strong> {{ student.familyName }}</p>
+    <p><strong>Email:</strong> {{ student.mail }}</p>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a href="{{ path('app_student_edit', { id: student.id }) }}" 
+       style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">Edit</a>
+
+    <form method="post" action="{{ path('app_student_delete', { id: student.id }) }}" 
+          style="display:inline;">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ student.id) }}">
+        <button type="submit" style="background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+            Delete
+        </button>
+    </form>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a href="{{ path('app_student_index') }}" style="color: #007bff; text-decoration: none;">Back to Student List</a>
+</div>
+{% endblock %}

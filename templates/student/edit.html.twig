@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        background-color: white;
+    }
+</style>
+
+<h1 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Edit Student</h1>
+
+<div style="width: 50%; margin: 0 auto; padding: 20px;">
+    {{ form_start(form) }}
+        <div style="margin-bottom: 15px;">
+            {{ form_label(form.name, 'Name') }}
+            {{ form_widget(form.name, { 'attr': { 'class': 'form-control', 'style': 'width: 100%;' } }) }}
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            {{ form_label(form.familyName, 'Family Name') }}
+            {{ form_widget(form.familyName, { 'attr': { 'class': 'form-control', 'style': 'width: 100%;' } }) }}
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            {{ form_label(form.mail, 'Email') }}
+            {{ form_widget(form.mail, { 'attr': { 'class': 'form-control', 'style': 'width: 100%;' } }) }}
+        </div>
+
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Update</button>
+    {{ form_end(form) }}
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a href="{{ path('app_student_index') }}" style="color: #007bff; text-decoration: none;">Back to Student List</a>
+</div>
+{% endblock %}
